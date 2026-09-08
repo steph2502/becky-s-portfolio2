@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-feature-settings: "kern" 1, "liga" 1;
+  letter-spacing: 0.01em;
+}
+
+.font-serif,
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: -0.01em;
+}
+
+:root {
+  --maroon: #5b1e2d;
+  --maroon-deep: #2a1014;
+  --gold: #c8a45e;
+  --gold-soft: #dfc38c;
+  --cream: #f7f3ed;
+  --ink: #1e1e1e;
+  --white: #fffdfb;
+  --line: rgba(30, 30, 30, 0.12);
+}
+
+/* Visible keyboard focus states on all interactive elements */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.wrap {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+@media (max-width: 560px) {
+  .wrap {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* Underline-on-hover nav links */
+.navlink {
+  position: relative;
+  padding-bottom: 4px;
+}
+.navlink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+.navlink:hover::after {
+  width: 100%;
+}
+
+/* Diagonal hairline texture used in the hero background */
+.hero-texture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0.025) 0px,
+    rgba(255, 255, 255, 0.025) 1px,
+    transparent 1px,
+    transparent 90px
+  );
+  pointer-events: none;
+}
